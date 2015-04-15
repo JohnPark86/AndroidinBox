@@ -1,0 +1,86 @@
+<!--
+    Layout for each individual item in ListView.
+    Sets up ImageView for thumbnail and divider and icons.
+    Imagebuttons to add Favorite or Archive and
+    TextField for title.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:layout_alignParentStart="true"
+        android:clickable="false"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:clickable="false"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView4"
+        android:paddingTop="13dp"
+        android:paddingRight="5dp"
+        android:singleLine="true"
+        android:textSize="12dp"
+        android:textColor="#1A539A"
+        android:layout_toRightOf="@+id/imageView4"
+        android:clickable="false"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/title"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb"
+        android:src="@drawable/home_details_divider"
+        android:clickable="false"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/favImgBtn"
+        android:layout_below="@+id/imageView"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb"
+        android:background="@null"
+        android:paddingTop="12dp"
+       android:src="@drawable/add_favorit_btn"
+        android:clickable="false"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/home_archive_btn_dis"
+        android:paddingLeft="15dp"
+        android:clickable="false"
+        android:layout_alignBottom="@+id/favImgBtn"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_above="@+id/imageView"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb"
+        android:src="@drawable/home_tv_icon"
+        android:paddingBottom="5dp"
+        android:clickable="false"/>
+</RelativeLayout>
