@@ -1,0 +1,17 @@
+<!-- Splash screen displays image in Imageview -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Splash_Screen_Activity">
+
+  <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/splashscreen"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>
+<!-- From: file:/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/src/main/res/layout/activity_splash_screen_.xml -->

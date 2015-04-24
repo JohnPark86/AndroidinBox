@@ -9,18 +9,29 @@
 package com.xtv.video_in_box;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /*
@@ -32,6 +43,7 @@ public class MainActivity extends Activity
     Button login;
     String json;
     ArrayList<HashMap<String, String>> arraylist;
+    EditText userText, passText;
 
 
     // Gets Intent from last activity and loads it into ArrayList holder for passing to next method.
@@ -41,7 +53,10 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setTheme(R.style.MyTheme);
         setContentView(R.layout.activity_main);
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
 
+        userText = (EditText)findViewById(R.id.username_Text);
+        passText = (EditText)findViewById(R.id.password_text);
         Intent i = getIntent();
         arraylist = (ArrayList<HashMap<String, String>>)i.getSerializableExtra("List");
         login = (Button) findViewById(R.id.LoginButton);
@@ -54,43 +69,50 @@ public class MainActivity extends Activity
         @Override
         public void onClick(View v)
         {
+            String username = userText.getText().toString();
+            String password = passText.getText().toString();
+           BufferedReader in = null;
+            String data = null;
+            Log.i(TAG,username+" - " +password);
 
-           // Intent i = new Intent(getApplicationContext(), VideoList.class);
-           // i.putExtra("List",arraylist);
-           // startActivity(i);
-           new HttpRequestTask().execute();
-            Log.i(TAG,"onClicked");
-        }
-    };
+            try{
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Login> {
-        @Override
-        protected Login doInBackground(Void... params) {
-            try {
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost request = new HttpPost("http://10.1.10.36:3000/api/Users/Login?");
 
-                String url = "http://10.0.3.2:8080/api/Users/login?access_token=fOsjbHvoGNbpqIl6tGicpzvlqiTXH95h3Y4A1ESlsewkTLs8Uj2K9WRAu0JxV1y9";
-                url.concat("&username={user}&password={pass}");
-              //  final String url = "http://rest-service.guides.spring.io/greeting";
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                Login login = restTemplate.getForObject(url, Login.class);
-                Log.i(TAG, "doInBackground()");
-                return login;
-            } catch (Exception e) {
-                Log.e("MainActivity: ", e.getMessage(), e);
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                nameValuePairs.add(new BasicNameValuePair("username", username));
+                nameValuePairs.add(new BasicNameValuePair("password", password));
+                request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                HttpResponse response = httpclient.execute(request);
+                in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                data = in.readLine();
+                Log.i(TAG,data.toString());
+                if(response.getStatusLine().getStatusCode()==200)
+                {
+                    Intent i = new Intent(getApplicationContext(), VideoList.class);
+                    i.putExtra("List", arraylist);
+                    startActivity(i);
+                }
+                if(response.getStatusLine().getStatusCode()==401)
+                {
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("Incorrect Login ");
+                    alertDialog.setMessage("The Username or Password entered does not match our records. Please try again. ");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+                }
+            }catch(Exception e){
+                Log.e(TAG, "Error in http connection "+e.toString());
             }
 
-            return null;
         }
 
-        @Override
-        protected void onPostExecute(Login login) {
-            Log.i("username: ", login.getUsername());
-            Log.i("password: ",login.getPassword());
-     //       Log.i("id:  ",login.getId());
-     //       Log.i("content:  ", login.getContent());
-
-        }
-
-    }
+    };
 }

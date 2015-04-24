@@ -19,48 +19,40 @@
         android:layout_alignParentStart="true"
         android:clickable="false"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView3"
-        android:clickable="false"/>
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imageView4"
-        android:paddingTop="13dp"
-        android:paddingRight="5dp"
+        android:paddingRight="30dp"
         android:singleLine="true"
         android:textSize="12dp"
         android:textColor="#1A539A"
-        android:layout_toRightOf="@+id/imageView4"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:layout_above="@+id/imageView"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/thumb"
-        android:layout_toEndOf="@+id/thumb"
         android:src="@drawable/home_details_divider"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:paddingTop="5dp"
+        android:layout_above="@+id/imageView2"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/favImgBtn"
-        android:layout_below="@+id/imageView"
+        android:background="@null"
+        android:src="@drawable/add_favorit_btn"
+        android:layout_alignBottom="@+id/thumb"
         android:layout_toRightOf="@+id/thumb"
         android:layout_toEndOf="@+id/thumb"
-        android:background="@null"
-        android:paddingTop="12dp"
-       android:src="@drawable/add_favorit_btn"
-        android:clickable="false"/>
+        android:paddingBottom="12dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -70,17 +62,28 @@
         android:paddingLeft="15dp"
         android:clickable="false"
         android:layout_alignBottom="@+id/favImgBtn"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/favImgBtn"
+        android:paddingBottom="12dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView4"
-        android:layout_above="@+id/imageView"
-        android:layout_toRightOf="@+id/thumb"
-        android:layout_toEndOf="@+id/thumb"
         android:src="@drawable/home_tv_icon"
         android:paddingBottom="5dp"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:paddingTop="5dp"
+        android:layout_above="@+id/title"
+        android:layout_toRightOf="@+id/thumb"
+        android:layout_toEndOf="@+id/thumb" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Channel ID]"
+        android:id="@+id/textView"
+        android:layout_above="@+id/title"
+        android:layout_toRightOf="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4" />
 </RelativeLayout>

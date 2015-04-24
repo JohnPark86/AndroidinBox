@@ -1,0 +1,52 @@
+<!--
+    Login Screen. Has 2 TextFields with Hints and a LogIn Button.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xtv.video_in_box.MainActivity"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgVw"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/mainicon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/uHint"
+        android:ems="10"
+        android:id="@+id/username_Text"
+        android:layout_below="@+id/imgVw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/pHnit"
+        android:ems="10"
+        android:id="@+id/password_text"
+        android:layout_below="@+id/username_Text"
+        android:layout_alignLeft="@+id/username_Text"
+        android:layout_alignStart="@+id/username_Text" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/LoginButton"
+        android:layout_below="@+id/password_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+</RelativeLayout>
+<!-- From: file:/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/src/main/res/layout/activity_main.xml -->

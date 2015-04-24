@@ -1,11 +1,12 @@
 <!--
-    Fll list of Videos. Displays 4 Image Buttons along bott0m and a ListView
+    Fll list of Videos. Displays 4 Image Buttons along bottom and a ListView
     of Channels populates screen. Uses  a horizontal Linear layout within a Relative Layout
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
     tools:context="com.xtv.video_in_box.VideoList">
 
     <ListView
@@ -58,6 +59,16 @@
             android:src="@drawable/camera_tab"
             android:background="#00000000" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Videos Found"
+        android:id="@+id/noVideos"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#1A539A"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

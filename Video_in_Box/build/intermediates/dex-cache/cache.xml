@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/classes-67b45dee938e7ae8534b5f13dc72682fdd9d25b0.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/org.atteo/evo-inflector/1.2/80ff9507ae75b5d007d44e856dba6953ff856a69/evo-inflector-1.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="80ff9507ae75b5d007d44e856dba6953ff856a69">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/evo-inflector-1.2-2c6ab6b3a16d63e74c19479a77d67cf05503f9f8.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/guava-18.0-e787cdc873058a0fce94c8bfb09657cc08d5b4ba.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="78b8f6e37921559ed21c1fae1f30f9f713494db8">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-739e9e20f375c64af21970b49b4c84388486fc82.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Library/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-d49ab4b7d1f6734a7fd16f073816e7d27c7ccc5a.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.6/a845a88238be0b5be9d238652c1bc0605ef91f52/android-async-http-1.4.6.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-5c154e9b7af68615f89b2e42d3967b4f958e45fd.jar" />
+    </item>
+    <item
+        jar="/Users/admin/.gradle/caches/modules-2/files-2.1/com.strongloop/loopback-sdk-android/1.5.2/4cf5dc98942cd69ea4fc1302d1b93a575d28120f/loopback-sdk-android-1.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cf5dc98942cd69ea4fc1302d1b93a575d28120f">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/loopback-sdk-android-1.5.2-78524f725922803ec1fbfaf9f3452710c9ec36c7.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/classes-229f93cd3cf43cf1283b69829d14c1bcd2283f83.jar" />
+    </item>
+    <item
+        jar="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/admin/Desktop/Xtv/Android_Build/Video_In_Box/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-dfc0868dd27c86fbaa8988f38e17e276fcfa3f11.jar" />
+    </item>
+
+</items>

@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,10 +22,13 @@ import java.util.HashMap;
 /*
     list of Channel Names
  */
-public class ChannelList extends Activity {
+public class ChannelList extends Activity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener{
 
-    ImageButton inbox,fav;
-    ArrayList<HashMap<String, String>> arraylist;
+    private ImageButton inbox,fav;
+    private ArrayList<HashMap<String, String>> arraylist;
+    private ListView lv;
+    private SearchView sView;
+    private dbAdapter mDbHelper;
 
     /*
         Gets arraylist from sent Activity as a holder to send back to
@@ -34,6 +39,14 @@ public class ChannelList extends Activity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.MyTheme);
         setContentView(R.layout.activity_channel_list);
+
+        sView = (SearchView)findViewById(R.id.searchView);
+        sView.setIconifiedByDefault(false);
+        sView.setOnQueryTextListener(this);
+        sView.setOnCloseListener(this);
+
+        mDbHelper = new dbAdapter(this);
+        mDbHelper.open();
 
         Intent i = getIntent();
         arraylist = (ArrayList<HashMap<String, String>>)i.getSerializableExtra("List");
@@ -57,5 +70,20 @@ public class ChannelList extends Activity {
                 startActivity(in);
             }
         });
+    }
+
+    @Override
+    public boolean onClose() {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
     }
 }

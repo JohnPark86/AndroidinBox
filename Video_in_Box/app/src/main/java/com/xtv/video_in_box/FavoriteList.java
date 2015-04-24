@@ -19,6 +19,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
     List of faorited videos.
@@ -42,7 +44,10 @@ public class FavoriteList extends Activity {
 
         Intent i = getIntent();
         arraylist = (ArrayList<HashMap<String, String>>) i.getSerializableExtra("List");
+
+        Set favSet = new HashSet((ArrayList<HashMap<String, String>>) i.getSerializableExtra("favorites"));
         favlist = (ArrayList<HashMap<String, String>>) i.getSerializableExtra("favorites");
+
         Log.i("A: ", arraylist.toString());
 
         inbox = (ImageButton) findViewById(R.id.inboxbutton);

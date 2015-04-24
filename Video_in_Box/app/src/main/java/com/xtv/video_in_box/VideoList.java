@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,8 @@ public class VideoList extends Activity {
     ArrayList<HashMap<String, String>> arraylist, favorites;
     HashMap<String, String> map = new HashMap<String, String>();
     ImageButton fav,vids;
+    TextView noVideos;
+
     /*
         Instantiates buttons along bottom of app and sets them up to pass necessary
         data for their own specific activites or to pass back to this activity when it is re-loaded.
@@ -41,9 +44,12 @@ public class VideoList extends Activity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.MyTheme);
         setContentView(R.layout.activity_video_list);
+        noVideos = (TextView)findViewById(R.id.noVideos);
 
         Intent i = getIntent();
         arraylist = (ArrayList<HashMap<String, String>>)i.getSerializableExtra("List");
+        if(arraylist.size()==0)
+            noVideos.setVisibility(View.VISIBLE);
 
         Log.i("A: ", arraylist.toString());
 
@@ -53,6 +59,7 @@ public class VideoList extends Activity {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(),FavoriteList.class);
                 favorites = ListViewAdapter.favorites;
+
                 Log.i("Favorites: ", favorites.toString());
                 in.putExtra("favorites",favorites);
                 in.putExtra("List",arraylist);

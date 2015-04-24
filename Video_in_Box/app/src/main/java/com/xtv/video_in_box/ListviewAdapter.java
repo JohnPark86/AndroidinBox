@@ -10,6 +10,7 @@ package com.xtv.video_in_box;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,6 @@ import java.util.HashMap;
  */
 class ListViewAdapter extends BaseAdapter {
 
-    HashMap<Integer,Boolean> states = new HashMap<Integer, Boolean>();
     Context context;
     LayoutInflater inflater;
     ArrayList<HashMap<String, String>> data;
@@ -63,7 +63,6 @@ class ListViewAdapter extends BaseAdapter {
     public String getMediaURL(int position){
 
         return data.get(position).get(SplashScreen_Activity.MEDIA);
-
     }
 
     /*
@@ -71,6 +70,7 @@ class ListViewAdapter extends BaseAdapter {
     data from splash screen JSON hashmap accordingly until all listview items have been populated.
      */
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         // Declare Variables
         TextView title, media;
         final Drawable notFav = context.getResources().getDrawable(R.drawable.add_favorit_btn);
@@ -79,6 +79,8 @@ class ListViewAdapter extends BaseAdapter {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.listview_item, parent, false);
         resultp = data.get(position);
+        addFav = (ImageButton)itemView.findViewById(R.id.favImgBtn);
+        addFav.setTag(position);
 
         title = (TextView) itemView.findViewById(R.id.title);
         thumb = (ImageView) itemView.findViewById(R.id.thumb);
@@ -87,10 +89,20 @@ class ListViewAdapter extends BaseAdapter {
         mediaURL = resultp.get(SplashScreen_Activity.MEDIA);
         imageLoader.DisplayImage(resultp.get(SplashScreen_Activity.THUMB), thumb);
 
-        addFav = (ImageButton)itemView.findViewById(R.id.favImgBtn);
-        addFav.setTag(position);
-        addFav.setOnClickListener(new View.OnClickListener() {
+        /*
+        Check to see if current views favorite button is currently pressed. If so, the view
+        applies the correct image upon redrawing.
+         */
+        if(favorites.contains(data.get(position)))
+            ((ImageButton) itemView.findViewById(R.id.favImgBtn)).setImageResource(R.drawable.add_favorit_btn_acitve);
+        else
+            ((ImageButton) itemView.findViewById(R.id.favImgBtn)).setImageResource(R.drawable.add_favorit_btn);
 
+        /*
+        Adds video to favorite list and adds its location to the list of favorited views
+        for redrawing purposes.
+         */
+        addFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int which = -1;
@@ -99,28 +111,23 @@ class ListViewAdapter extends BaseAdapter {
                     which = ((Integer) obj).intValue();
                 }
 
-                if (which > -1) {
+                if(favorites.contains(data.get(which))) {
+                    Log.i("WHICH: ", String.valueOf(which));
+                    favorites.remove(favorites.indexOf(data.get(which)));
+                }
+                else if (which > -1) {
                     favMap = data.get(which);
                     favorites.add(favMap);
                 }
 
-                if (states.containsKey(position)) {
-                  //  states.put(position, !states.get(position));
-                    ((ImageButton) v.findViewById(R.id.favImgBtn)).setImageResource(states.get(position) ? R.drawable.add_favorit_btn_acitve : R.drawable.add_favorit_btn);
+                if (favorites.contains(favMap)) {
+                    ((ImageButton) v.findViewById(R.id.favImgBtn)).setImageResource(favorites.contains(data.get(position)) ? R.drawable.add_favorit_btn_acitve : R.drawable.add_favorit_btn);
                 } else {
-                    states.put(position, true);
                    ((ImageButton) v.findViewById(R.id.favImgBtn)).setImageResource(R.drawable.add_favorit_btn_acitve);
                 }
             notifyDataSetChanged();
             }
-
         });
-
-        if(states.containsKey(position) && states.get(position))
-            ((ImageButton) itemView.findViewById(R.id.favImgBtn)).setImageResource(R.drawable.add_favorit_btn_acitve);
-       // else
-         //   ((ImageButton) itemView.findViewById(R.id.favImgBtn)).setImageResource(R.drawable.add_favorit_btn);
-
         return itemView;
     }
 
