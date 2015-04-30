@@ -11,6 +11,31 @@
     tools:context="com.xtv.video_in_box.FavoriteList">
 
     <LinearLayout
+        android:id="@+id/searchView_linearLayout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        >
+
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchView"
+            android:layout_centerHorizontal="true" />
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:id="@+id/list"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout android:id="@+id/rightLayout"
+        android:layout_width="match_parent" android:orientation="vertical"
+        android:layout_height="wrap_content" android:paddingTop="25dp">
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -51,13 +76,5 @@
             android:src="@drawable/camera_tab"
             android:background="#00000000" />
     </LinearLayout>
-
-    <SearchView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:paddingTop="5dp"
-        android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>

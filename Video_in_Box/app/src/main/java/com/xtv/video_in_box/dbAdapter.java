@@ -80,7 +80,7 @@ public class dbAdapter
                 KEY_MEDIA + "," +
                 KEY_THUMB +
                 " from " + FTS_VIRTUAL_TABLE +
-                " where " +  KEY_SEARCH + " MATCH '" + inputText + "';";
+                " where " +  KEY_TITLE + " MATCH '" + inputText + "';";
         Log.w(TAG, query);
         Cursor mCursor = mDb.rawQuery(query,null);
 

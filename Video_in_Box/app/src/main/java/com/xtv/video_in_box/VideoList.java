@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,6 +35,7 @@ public class VideoList extends Activity {
     HashMap<String, String> map = new HashMap<String, String>();
     ImageButton fav,vids;
     TextView noVideos;
+    JSONObject jsonobject;
 
     /*
         Instantiates buttons along bottom of app and sets them up to pass necessary
@@ -57,12 +60,12 @@ public class VideoList extends Activity {
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),FavoriteList.class);
+                Intent in = new Intent(getApplicationContext(), FavoriteList.class);
                 favorites = ListViewAdapter.favorites;
 
                 Log.i("Favorites: ", favorites.toString());
-                in.putExtra("favorites",favorites);
-                in.putExtra("List",arraylist);
+                in.putExtra("favorites", favorites);
+                in.putExtra("List", arraylist);
                 startActivity(in);
             }
         });
@@ -71,8 +74,8 @@ public class VideoList extends Activity {
         vids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),ChannelList.class);
-                in.putExtra("List",arraylist);
+                Intent in = new Intent(getApplicationContext(), ChannelList.class);
+                in.putExtra("List", arraylist);
                 startActivity(in);
             }
         });
@@ -82,7 +85,6 @@ public class VideoList extends Activity {
         If a Button is clicked it launches MediaPlayer Activity to play selected
         video.
          */
-
         lv = (ListView)findViewById(R.id.list);
         adapter = new ListViewAdapter(getApplicationContext(),arraylist);
         lv.setAdapter(adapter);
@@ -96,8 +98,6 @@ public class VideoList extends Activity {
                 startActivity(i);
             }
         });
-
-
     }
 
 }

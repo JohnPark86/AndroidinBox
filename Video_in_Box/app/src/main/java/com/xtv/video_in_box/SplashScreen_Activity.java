@@ -89,7 +89,6 @@ public class SplashScreen_Activity extends Activity
         protected void onPostExecute(Void result)
         {
             super.onPostExecute(result);
-
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             i.putExtra("List",arraylist);
             startActivity(i);

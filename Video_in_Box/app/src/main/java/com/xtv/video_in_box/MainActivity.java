@@ -45,7 +45,6 @@ public class MainActivity extends Activity
     ArrayList<HashMap<String, String>> arraylist;
     EditText userText, passText;
 
-
     // Gets Intent from last activity and loads it into ArrayList holder for passing to next method.
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,6 +58,7 @@ public class MainActivity extends Activity
         passText = (EditText)findViewById(R.id.password_text);
         Intent i = getIntent();
         arraylist = (ArrayList<HashMap<String, String>>)i.getSerializableExtra("List");
+
         login = (Button) findViewById(R.id.LoginButton);
         login.setOnClickListener(loginB);
     }
@@ -71,14 +71,13 @@ public class MainActivity extends Activity
         {
             String username = userText.getText().toString();
             String password = passText.getText().toString();
-           BufferedReader in = null;
+            BufferedReader in = null;
             String data = null;
             Log.i(TAG,username+" - " +password);
 
             try{
-
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost request = new HttpPost("http://10.1.10.36:3000/api/Users/Login?");
+                HttpPost request = new HttpPost("http://192.168.1.34:3000/api/Users/Login?");
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
                 nameValuePairs.add(new BasicNameValuePair("username", username));
@@ -111,7 +110,6 @@ public class MainActivity extends Activity
             }catch(Exception e){
                 Log.e(TAG, "Error in http connection "+e.toString());
             }
-
         }
 
     };

@@ -45,6 +45,12 @@ class ListViewAdapter extends BaseAdapter {
         imageLoader = new ImageLoader(context);
     }
 
+    public void addList(ArrayList<HashMap<String, String>> arraylist)
+    {
+        data = arraylist;
+    }
+
+
     @Override
     public int getCount() {
         return data.size();

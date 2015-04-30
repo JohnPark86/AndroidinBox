@@ -173,6 +173,8 @@
     <string name="app_name">Video_In_Box</string>
     <string name="hello_world">Hello world!</string>
     <string name="pHnit">Enter Password</string>
+    <string name="search_hint">Search Videos</string>
+    <string name="search_label">Video In Box</string>
     <string name="title_activity_channel_list">ChannelList</string>
     <string name="title_activity_favorite_list">FavoriteList</string>
     <string name="title_activity_main">MainActivity</string>
